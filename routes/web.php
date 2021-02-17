@@ -22,6 +22,8 @@ $router->get('/', function () {
 });
 
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
+    $router->get('/get/banners', ['uses' => 'BannerController@show']);
+
     $router->post('/auth/login', ['uses' => 'AuthController@authenticate']);
 
     $router->group(['prefix' => 'data', 'middleware' => 'jwt.auth'], function () use ($router) {
